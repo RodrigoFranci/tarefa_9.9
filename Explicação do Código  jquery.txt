@@ -1,0 +1,21 @@
+Explicação do Código JavaScript: jquery
+
+$(document).ready(function() {
+    // Espera até que o documento HTML seja totalmente carregado
+
+    $('#task-form').submit(function(event) {
+        // Anexa um manipulador de evento para o envio do formulário
+        event.preventDefault(); // Previne o comportamento padrão do formulário (recarregar a página)
+        var taskName = $('#task-input').val(); // Obtém o valor do campo de entrada
+        if (taskName.trim() !== '') { // Verifica se o valor não está vazio
+            $('#task-list').append('<li>' + taskName + '</li>'); // Adiciona um novo item à lista de tarefas
+            $('#task-input').val(''); // Limpa o campo de entrada
+        }
+    });
+
+    $('#task-list').on('click', 'li', function() {
+        // Anexa um manipulador de evento de clique aos elementos <li> da lista de tarefas
+        $(this).toggleClass('completed'); // Alterna a classe 'completed' no elemento clicado
+        // Isso adiciona ou remove o efeito de linha riscada no texto da tarefa
+    });
+});
